@@ -11,7 +11,8 @@ export function* getBlogsSaga(action:AnyAction):Generator{
   }
 
 export function* deleteBlogsSaga(action:AnyAction):Generator{
-   yield call(deleteBlog, action.payload)
+  const data= yield call(deleteBlog, action.payload)
+console.log('datadelet',data)
    yield put (blogDeletedAction())
 }
 export function* addBlogsaga(action:AnyAction):Generator{

@@ -16,9 +16,11 @@ type BlogsPageProps = {
 
 const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,anyAttempt,loading,...props}) => {
   useEffect(()=>{
+    console.log('useState run')
    blogsFetch()
   },[anyAttempt,loading])
   const filteredBlogs=blogs.reverse().slice(0,4)
+  console.log(blogs)
   return <div className="px-20 py-10">
 {
 filteredBlogs.map((b)=><BlogRow key={b._id} blog={b}/>)
