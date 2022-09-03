@@ -24,7 +24,7 @@ const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogE
         cancelclick()
     }
    const validationSchema=object().shape({
-     title:string().required().max(40),
+     title:string().required(),
      image:string().required().url(),
      content:string().required()
 
