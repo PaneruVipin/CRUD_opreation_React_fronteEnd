@@ -21,7 +21,7 @@ export const blogsReducers:Reducer<state>=(state=initialState,action)=>{
     
      case BLOGS_FETCHED:{
         const blogs=useArrayToObject(action.payload)
-        return {...state,entities:{...state.entities,...blogs}}
+        return {...state,entities:blogs}
      }
      
      case BLOG_ADDED:{
