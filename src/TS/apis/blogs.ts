@@ -1,6 +1,6 @@
 import axios from "axios"
-import { blog } from "../modeles/blog"
-const BASE_API='https://crudcrud.com/api/d3af379414a3444db088d53ffa50f201/'
+import { blog, blogDetail } from "../modeles/blog"
+const BASE_API='https://crudcrud.com/api/8840ea18a4914713914e0bb8eb363a6f/'
 export  const getBlogs= async() =>{
     const response= await axios.get<blog[]>(BASE_API+'blogs')
     return response.data
@@ -13,7 +13,7 @@ export const addBlog =async(blog:blog)=>{
     return response.data
 }
 
-export const editBlog =async(blog:blog, id:string)=>{
+export const editBlog =async(blog:blogDetail, id:string)=>{
     const response= await axios.put<blog>(BASE_API+'blogs/'+id,
     blog
     )

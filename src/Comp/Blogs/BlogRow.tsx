@@ -5,13 +5,17 @@ import {BiEdit} from 'react-icons/bi'
 import { connect } from "react-redux";
 import { blogDeleteAction, blogEditAction } from "../../TS/actions/blogs";
 import WritingPopup from "./WritingPopup";
+import Loader from "../../loader/Loader";
+import { State } from "../../TS/store";
+import { loadingSelector } from "../../TS/seectors/blogs";
 type BlogRowProps = {
   blog:blog
   editBlog:(blog:blogDetail,id:string)=>void
-  deleteBlog:(id:string)=>void
+  deleteBlog:(id:string)=>void,
+  loading:boolean
 };
 
-const BlogRow: FC<BlogRowProps> = ({blog,editBlog,deleteBlog}) => {
+const BlogRow: FC<BlogRowProps> = ({blog,editBlog,deleteBlog,loading}) => {
   
   const [toggleEdit,setToggleEdit]=useState(false)
   const cancelClick=()=>{
@@ -36,6 +40,7 @@ const blogEdit=(blogDetail:blogDetail)=>{
 }
 return (
   <div className="rounded-md shadow-md">
+    {loading && <Loader/>}
     {toggleEdit && <WritingPopup
      intialValues={intialValues} cancelclick={cancelClick} blogEdit={blogEdit}/>}
     <div className="flex hustify-end">
@@ -59,5 +64,9 @@ const mapDispatchToProps={
   deleteBlog:blogDeleteAction,
   editBlog:blogEditAction
 }
-
-export default connect(undefined,mapDispatchToProps)((memo(BlogRow)));
+const mapStateToProps=(s:State)=>{
+  return {
+    loading:loadingSelector(s)
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)((memo(BlogRow)));
