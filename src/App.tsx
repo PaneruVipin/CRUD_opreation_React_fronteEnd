@@ -1,6 +1,6 @@
 import { FC, useState } from "react"
 import { connect } from "react-redux"
-import BlogSPage from "./Comp/Blogs/BlogSPage"
+import BlogSPage from "./Comp/Blogs/BlogsPage"
 import Footer from "./Comp/Blogs/Footer"
 import Header from "./Comp/Blogs/Header"
 import WritingPopup from "./Comp/Blogs/WritingPopup"
@@ -34,6 +34,7 @@ const blogAdd=(data:blogDetail)=>{
     </div>
     </div>
   )
+ 
 }
 
 const mapDispatchToProps={

@@ -16,7 +16,7 @@ const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,...props}) => {
   useEffect(()=>{
    blogsFetch()
   },[])
-  console.log('pgedata',blogs)
+ 
   return <div className="px-20 py-10">
 {
 blogs.map((b)=><BlogRow key={b._id} blog={b}/>)

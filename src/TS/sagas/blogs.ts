@@ -7,7 +7,6 @@ import { blog } from "../modeles/blog";
 
 export function* getBlogsSaga(action:AnyAction):Generator{
  const data = yield call(getBlogs)
- console.log('data',data)
   yield put(blogsFetchedAction(data as blog[]))
   }
 
@@ -23,5 +22,6 @@ yield put (blogAddedAction())
 
 export function* editBlogsSaga(action:AnyAction):Generator{
   const data= yield call(editBlog, action.payload,action.payload.id)
+  console.log('data',data)
       yield put (blogEditedAction())
 }

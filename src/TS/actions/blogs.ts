@@ -26,7 +26,7 @@ export const blogDeletedAction = ()=>{
 }
 
  export const blogEditAction = (blog:blogDetail, id:string)=>{
-  return {type:BLOG_EDIT, payload:{blog,id}}
+  return {type:BLOG_EDIT, payload:{title:blog.title,date:blog.date,_id:id,image:blog.image, content:blog.content}}
   }
 
   export const blogEditedAction = ()=>{

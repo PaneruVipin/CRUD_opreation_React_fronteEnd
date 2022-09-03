@@ -9,17 +9,17 @@ type CreatePostProps = {
     cancelclick:()=>void
     intialValues:blogDetail
     blogAdd?:(blog:blogDetail)=>void
-    blogEdit?:(blog:blogDetail,id:number)=>void
-    editId?:number
+    blogEdit?:(blog:blogDetail)=>void
 };
 
-const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogEdit,editId,...props}) => {
+const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogEdit,...props}) => {
     const onSubmit=(data:any)=>{
+      console.log('submitdata',data)
         if(blogAdd){
             blogAdd(data)
         }
-        if(blogEdit && editId){
-            blogEdit(data,editId)
+        if(blogEdit ){
+            blogEdit(data,)
         }
         cancelclick()
     }
