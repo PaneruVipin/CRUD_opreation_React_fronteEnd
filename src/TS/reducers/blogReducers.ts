@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { BLOGS_FETCHED, BLOG_ADD, BLOG_ADDED, BLOG_DELETE, BLOG_DELETED, BLOG_EDIT, BLOG_EDITED } from "../actions/blogs";
+import { BLOGS_FETCH, BLOGS_FETCHED, BLOG_ADD, BLOG_ADDED, BLOG_DELETE, BLOG_DELETED, BLOG_EDIT, BLOG_EDITED } from "../actions/blogs";
 import { useArrayToObject } from "../hooks/array";
 import { blog } from "../modeles/blog";
 
@@ -19,10 +19,12 @@ export const blogsReducers:Reducer<state>=(state=initialState,action)=>{
    switch (action.type) {
     
      case BLOGS_FETCHED:{
-        const blogs=useArrayToObject(action.payload)
-        return {...state,entities:blogs}
+        const blogs=useArrayToObject(action.payload.blogs)
+        return {...state,entities:blogs,loading:action.payload.loading}
      }
-     
+     case BLOGS_FETCH:{
+      return{...state,loading:action.payload.loading}
+     }
      case BLOG_ADDED:{
       const {ADELoading,loading}=action.payload
       return {...state,ADELoading:ADELoading,loading:loading }

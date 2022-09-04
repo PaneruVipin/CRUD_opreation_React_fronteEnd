@@ -50,5 +50,3 @@ const mapDispatchToProps={
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(memo(BlogsPage));
-
-//hello world

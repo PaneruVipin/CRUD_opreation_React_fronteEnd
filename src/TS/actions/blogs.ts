@@ -41,10 +41,10 @@ export const blogDeletedAction = (ADELoading:boolean,loading=false)=>{
     }
 
 
-export const blogsFetchAction=()=>{
-return {type:BLOGS_FETCH}
+export const blogsFetchAction=(loading=true)=>{
+return {type:BLOGS_FETCH,payload:loading}
 }
-export const blogsFetchedAction=(blogs:blog[])=>{
-  return {type:BLOGS_FETCHED, payload:blogs}
+export const blogsFetchedAction=(blogs:blog[],loading=false)=>{
+  return {type:BLOGS_FETCHED, payload:{blogs,loading}}
   }
 
