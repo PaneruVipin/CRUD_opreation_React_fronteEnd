@@ -5,16 +5,16 @@ import {BiEdit} from 'react-icons/bi'
 import { connect } from "react-redux";
 import { blogDeleteAction, blogEditAction } from "../../TS/actions/blogs";
 import WritingPopup from "./WritingPopup";
-import Loader from "../../loader/Loader";
 import { State } from "../../TS/store";
-import { loadingSelector } from "../../TS/seectors/blogs";
+import { ADELoadingSelector } from "../../TS/seectors/blogs";
 type BlogRowProps = {
   blog:blog
-  editBlog:(blog:blogDetail,id:string)=>void
-  deleteBlog:(id:string)=>void
+  editBlog:(blog:blogDetail,id:string,ADELoading:boolean)=>void
+  deleteBlog:(id:string,ADELoading:boolean)=>void,
+  ADELoading:boolean
 };
 
-const BlogRow: FC<BlogRowProps> = ({blog,editBlog,deleteBlog}) => {
+const BlogRow: FC<BlogRowProps> = ({blog,editBlog,deleteBlog,ADELoading}) => {
   
   const [toggleEdit,setToggleEdit]=useState(false)
   const cancelClick=()=>{
@@ -25,7 +25,7 @@ const editClick =()=>{
  cancelClick()
 }
 const deleteClick =()=>{
-deleteBlog(blog._id)
+deleteBlog(blog._id,ADELoading)
 }
 const intialValues:blogDetail={
 title:blog.title,
@@ -35,7 +35,7 @@ content:blog.content
 }
 const blogEdit=(blogDetail:blogDetail)=>{
   console.log('blogpagedata',blogDetail,blog._id)
-  editBlog(blogDetail,blog._id)
+  editBlog(blogDetail,blog._id,ADELoading)
 }
 return (
   <div className="rounded-md shadow-md">
@@ -65,7 +65,7 @@ const mapDispatchToProps={
 }
 const mapStateToProps=(s:State)=>{
   return {
-    
+    ADELoading:ADELoadingSelector(s)
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)((memo(BlogRow)));

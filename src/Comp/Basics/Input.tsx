@@ -18,7 +18,7 @@ const Input:FC<InputProps> = ({type,name,id,label, ...rest}) =>{
         name={name}
         id={id}
         type={'text' && type}
-        className={cn('border border-gray-300 block  shadow-md rounded-md py-1 font-bold text-black pl-3 outline-none', 
+        className={cn('border border-gray-300 block  shadow-md rounded-md py-1 font-bold text-black pl-3 outline-none ', 
         {'focus:ring focus:ring-yellow-400 w-full ring-offset-2 border-indigo-300':type!='checkbox'})} />
      <div className='h-4'>
      { meta.error && meta.touched && <p className='text-red-500 font-bold'>{meta.error}</p>}

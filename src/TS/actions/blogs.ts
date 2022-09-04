@@ -12,25 +12,32 @@ export const BLOGS_FETCHED='BLOGS_FECHED'
 
 
 
-export const blogAddAction = (blog:blogDetail)=>{
-return {type:BLOG_ADD, payload:blog}
+export const blogAddAction = (blog:blogDetail,ADELoading:boolean,loading=true)=>{
+return {type:BLOG_ADD, payload:{blog,loading,ADELoading}}
 }
-export const blogAddedAction = ()=>{
-  return {type:BLOG_ADDED }
+export const blogAddedAction = (ADELoading:boolean,loading=false)=>{
+  return {type:BLOG_ADDED,payload:{loading,ADELoading:!ADELoading} }
 }
-export const blogDeleteAction = (id:string)=>{
-    return {type:BLOG_DELETE, payload:id}
+export const blogDeleteAction = (id:string,ADELoading:boolean,loading=true)=>{
+    return {type:BLOG_DELETE, payload:{id,loading,ADELoading}}
 }
-export const blogDeletedAction = ()=>{
-  return {type:BLOG_DELETED}
+export const blogDeletedAction = (ADELoading:boolean,loading=false)=>{
+  return {type:BLOG_DELETED,payload:{loading,ADELoading:!ADELoading}}
 }
 
- export const blogEditAction = (blog:blogDetail, id:string)=>{
-  return {type:BLOG_EDIT, payload:{title:blog.title,date:blog.date,_id:id,image:blog.image, content:blog.content}}
+ export const blogEditAction = (blog:blogDetail, id:string,ADELoading:boolean,loading=true)=>{
+  return {
+    type:BLOG_EDIT,
+     payload:{
+      blog:{title:blog.title,date:blog.date,_id:id,image:blog.image, content:blog.content},
+      loading,
+      ADELoading
+    }
+    }
   }
 
-  export const blogEditedAction = ()=>{
-    return {type:BLOG_EDITED }
+  export const blogEditedAction = (ADELoading:boolean,loading=false)=>{
+    return {type:BLOG_EDITED, payload:{loading,ADELoading:!ADELoading} }
     }
 
 

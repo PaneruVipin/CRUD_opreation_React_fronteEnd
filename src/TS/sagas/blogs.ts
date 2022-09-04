@@ -11,20 +11,18 @@ export function* getBlogsSaga(action:AnyAction):Generator{
   }
 
 export function* deleteBlogSaga(action:AnyAction):Generator{
-  const data= yield call(deleteBlog, action.payload)
-console.log('datadelet',data)
-   yield put (blogDeletedAction())
+  const data= yield call(deleteBlog, action.payload.id)
+   yield put (blogDeletedAction(action.payload.ADELoading) )
 }
 export function* addBlogSaga(action:AnyAction):Generator{
   
-yield call(addBlog, action.payload)
-yield put (blogAddedAction())
+yield call(addBlog, action.payload.blog)
+yield put (blogAddedAction(action.payload.ADELoading))
 }
 
 export function* editBlogSaga(action:AnyAction):Generator{
-  const blog:blog=action.payload
+  const blog:blog=action.payload.blog
   const data= yield call(editBlog, 
     {title:blog.title,image:blog.image,content:blog.content,date:blog.date},blog._id)
-  console.log('data',data)
-      yield put (blogEditedAction())
+      yield put (blogEditedAction(action.payload.ADELoading))
 }

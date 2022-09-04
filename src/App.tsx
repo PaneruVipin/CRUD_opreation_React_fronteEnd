@@ -6,17 +6,20 @@ import Header from "./Comp/Blogs/Header"
 import WritingPopup from "./Comp/Blogs/WritingPopup"
 import { blogAddAction } from "./TS/actions/blogs"
 import { blogDetail } from "./TS/modeles/blog"
+import { ADELoadingSelector } from "./TS/seectors/blogs"
+import { State } from "./TS/store"
 
 type AppProps={
-  addBlog:(data:blogDetail)=>void
+  addBlog:(data:blogDetail,ADELoading:boolean)=>void,
+  ADELoading:boolean
 }
-const App:FC<AppProps>=({addBlog})=> {
+const App:FC<AppProps>=({addBlog,ADELoading})=> {
 const [toggleCreatePost, setToggleCreatePost]=useState(false)
 const cancelClick=()=>{
   setToggleCreatePost(!toggleCreatePost)
 }
 const blogAdd=(data:blogDetail)=>{
-    addBlog(data)
+    addBlog(data,ADELoading)
 }
   return (
     <div className=" min-h-screen">
@@ -38,7 +41,12 @@ const blogAdd=(data:blogDetail)=>{
 }
 
 const mapDispatchToProps={
-  addBlog:blogAddAction
+  addBlog:blogAddAction,
+}
+const mapStateToProps=(s:State)=>{
+  return{
+  ADELoading:ADELoadingSelector(s)
+  }
 }
 
-export default connect(undefined,mapDispatchToProps)(App)
+export default connect(mapStateToProps,mapDispatchToProps)(App)

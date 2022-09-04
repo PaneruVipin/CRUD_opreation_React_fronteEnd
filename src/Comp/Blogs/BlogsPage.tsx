@@ -22,7 +22,6 @@ const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,ADELoading,loading}) =>
   },[ADELoading])//ADE - ADDED DELETED EDITED 
   const [n,setN]=useState(5)
   const filteredBlogs=blogs.reverse().slice(0,n)
-  console.log('n',n,blogs.length)
   return <div className="md:px-20 pt-10 pb-20 px-2 ">
     {
       loading && <Loader/>
@@ -31,9 +30,9 @@ const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,ADELoading,loading}) =>
 filteredBlogs.map((b)=><BlogRow key={b._id} blog={b}/>)
 }
 <div className="flex justify-center gap-x-4 mt-6">
-{(blogs.length+1!>=n) &&<Button theme='secondry' onClick={()=>{setN(n+5)}}>See More....</Button>}
+{(blogs.length!>=n) &&<Button theme='secondry' onClick={()=>{setN(n+5)}}>See More....</Button>}
 {
-  n>5 && <Button theme='secondry' onClick={()=>{n>=10?setN(n-5):setN(5)}}>See less....</Button>}
+  (n>5 &&blogs.length>=5)&& <Button theme='secondry' onClick={()=>{n>=10?setN(n-5):setN(5)}}>See less....</Button>}
   </div>
   </div>;
 };

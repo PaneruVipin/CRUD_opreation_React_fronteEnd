@@ -24,22 +24,25 @@ export const blogsReducers:Reducer<state>=(state=initialState,action)=>{
      }
      
      case BLOG_ADDED:{
-      return {...state,ADELoading:!state.ADELoading,loading:false }
+      const {ADELoading,loading}=action.payload
+      return {...state,ADELoading:ADELoading,loading:loading }
      }
      case BLOG_DELETED:{
-      return {...state, ADELoading:!state.ADELoading,loading:false }
+      const {ADELoading,loading}=action.payload
+      return {...state, ADELoading:ADELoading,loading:loading }
      }
      case BLOG_EDITED:{
-      return {...state,ADELoading:!state.ADELoading,loading:false }
+      const {ADELoading,loading}=action.payload
+      return {...state,ADELoading:ADELoading,loading:loading }
      }
      case BLOG_ADD:{
-      return {...state,loading:true}
+      return {...state,loading:action.payload.loading}
      }
      case BLOG_EDIT:{
-      return {...state,loading:true}
+      return {...state,loading:action.payload.loading}
      }
      case BLOG_DELETE:{
-      return {...state,loading:true}
+      return {...state,loading:action.payload.loading}
      }
     default:{
         return {...state}
