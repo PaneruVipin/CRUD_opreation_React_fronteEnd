@@ -29,7 +29,7 @@ const blogAdd=(data:blogDetail)=>{
       intialValues={{title:'',date:'',content:'',image:''}} 
       blogAdd={blogAdd}/>}
       <BlogSPage/>
-    <div className="fixed bottom-0 inset-x-0">
+    <div className="fixed bottom-0 inset-x-0 z-0">
     <Footer addClick={cancelClick}/>
     </div>
     </div>

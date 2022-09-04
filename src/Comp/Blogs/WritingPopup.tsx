@@ -37,8 +37,8 @@ const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogE
    }
   return <Formik onSubmit={onSubmit} validationSchema={validationSchema} initialValues={initialValues}>
     <Form >
-    <div className="pt-10 md:px-60  fixed inset-0 ">
-     <div className=" rounded-md shadow-md shadow-md p-4  space-y-6 bg-yellow-500">
+    <div className=" md:px-60 px-4 fixed inset-0 py-20 z-10">
+     <div className=" rounded-md shadow-md shadow-md space-y-0 p-4 md:space-y-6 bg-yellow-500 h-full  overflow-y-scroll">
     <Input id="title" name="title" placeholder=" enter your blog title"/>
     <Input id="image" name="image" placeholder="enter image link"/>
     <Input id="content" name="content" placeholder=" enter desription"/>

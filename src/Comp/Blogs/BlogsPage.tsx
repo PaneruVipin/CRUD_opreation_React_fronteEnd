@@ -3,25 +3,25 @@ import { FC, memo, useEffect } from "react";
 import { connect } from "react-redux";
 import { blogsFetchAction} from "../../TS/actions/blogs";
 import { blog } from "../../TS/modeles/blog";
-import { anyAttemptSelector, blogsStateSelector, loadingSelector,  } from "../../TS/seectors/blogs";
+import { ADELoadingSelector, blogsStateSelector, loadingSelector,  } from "../../TS/seectors/blogs";
 import { State } from "../../TS/store";
 import BlogRow from "./BlogRow";
 
 type BlogsPageProps = {
     blogs:blog[]
     blogsFetch:()=>void
-    anyAttempt:boolean
+    ADELoading:boolean
     loading:boolean
 };
 
-const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,anyAttempt,loading,...props}) => {
+const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,ADELoading,loading,...props}) => {
   useEffect(()=>{
     console.log('useState run')
    blogsFetch()
-  },[anyAttempt,loading])
+  },[ADELoading])
   const filteredBlogs=blogs.reverse().slice(0,4)
   console.log(blogs)
-  return <div className="px-20 py-10">
+  return <div className="md:px-20 py-10 px-2 ">
 {
 filteredBlogs.map((b)=><BlogRow key={b._id} blog={b}/>)
 }
@@ -32,7 +32,7 @@ BlogsPage.defaultProps = {};
 const mapStateToProps=(s:State)=>{
   return {
     blogs:blogsStateSelector(s),
-    anyAttempt:anyAttemptSelector(s),
+    ADELoading:ADELoadingSelector(s),
     loading:loadingSelector(s)
   }
 }

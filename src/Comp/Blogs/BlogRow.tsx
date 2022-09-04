@@ -43,11 +43,11 @@ return (
     {loading && <Loader/>}
     {toggleEdit && <WritingPopup
      intialValues={intialValues} cancelclick={cancelClick} blogEdit={blogEdit}/>}
-    <div className="flex hustify-end">
+    <div className="flex  justify-end">
     <BiEdit className="w-10 h-10 " onClick={editClick}/>
     <AiFillDelete className="w-10 h-10 ml-4" onClick={deleteClick}/>
     </div>
-    <div className="flex gap-x-3 p-4 space-y-2  ">
+    <div className="md:flex gap-x-3 p-4 space-y-2  ">
     <img src={blog.image} className='w-64 h-64'/>
    <div>
      <h2 className="font-bold txt-2xl space-y-6">{blog.title}</h2>

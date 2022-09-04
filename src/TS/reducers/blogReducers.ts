@@ -7,14 +7,13 @@ type state={
    entities:{
    [id:string]:blog 
 },
-
-anyAttempt:boolean,
+ADELoading:boolean,   // ADDED DELETED EDITED 
 loading:boolean
 }
 const initialState:state={
   entities:{},
-anyAttempt:false,
-loading:false
+  ADELoading:false,
+  loading:false
 }
 export const blogsReducers:Reducer<state>=(state=initialState,action)=>{
    switch (action.type) {
@@ -25,14 +24,13 @@ export const blogsReducers:Reducer<state>=(state=initialState,action)=>{
      }
      
      case BLOG_ADDED:{
-      return {...state,anyAttempt:!state.anyAttempt,loading:false }
+      return {...state,ADELoading:!state.ADELoading,loading:false }
      }
      case BLOG_DELETED:{
-      console.log('blog deletd')
-      return {...state, anyAttempt:!state.anyAttempt,loading:false }
+      return {...state, ADELoading:!state.ADELoading,loading:false }
      }
      case BLOG_EDITED:{
-      return {...state,anyAttempt:!state.anyAttempt,loading:false }
+      return {...state,ADELoading:!state.ADELoading,loading:false }
      }
      case BLOG_ADD:{
       return {...state,loading:true}

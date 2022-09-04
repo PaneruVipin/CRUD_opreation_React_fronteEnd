@@ -10,18 +10,18 @@ export function* getBlogsSaga(action:AnyAction):Generator{
   yield put(blogsFetchedAction(data as blog[]))
   }
 
-export function* deleteBlogsSaga(action:AnyAction):Generator{
+export function* deleteBlogSaga(action:AnyAction):Generator{
   const data= yield call(deleteBlog, action.payload)
 console.log('datadelet',data)
    yield put (blogDeletedAction())
 }
-export function* addBlogsaga(action:AnyAction):Generator{
+export function* addBlogSaga(action:AnyAction):Generator{
   
 yield call(addBlog, action.payload)
 yield put (blogAddedAction())
 }
 
-export function* editBlogsSaga(action:AnyAction):Generator{
+export function* editBlogSaga(action:AnyAction):Generator{
   const blog:blog=action.payload
   const data= yield call(editBlog, 
     {title:blog.title,image:blog.image,content:blog.content,date:blog.date},blog._id)
