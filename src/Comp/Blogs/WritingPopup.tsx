@@ -10,9 +10,10 @@ type CreatePostProps = {
     intialValues:blogDetail
     blogAdd?:(blog:blogDetail)=>void
     blogEdit?:(blog:blogDetail)=>void
+    buttonName?:'save'|'upload'|'edit'|'update'
 };
 
-const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogEdit,...props}) => {
+const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogEdit,buttonName,...props}) => {
     const onSubmit=(data:any)=>{
       console.log('submitdata',data)
         if(blogAdd){
@@ -44,7 +45,7 @@ const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogE
     <Input id="content" name="content" placeholder=" enter desription"/>
     <Input id="date" name="date" type='date' />
     <div className="flex gap-x-4">
-    <Button  type="submit">Upload</Button>
+    <Button  type="submit">{buttonName}</Button>
     <Button theme="secondry" onClick={cancelclick} type="button">Cancel</Button>
     </div>
     </div>
@@ -53,7 +54,9 @@ const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogE
   </Formik>
 };
 
-CreatePost.defaultProps = {};
+CreatePost.defaultProps = {
+  buttonName:'save'
+};
 
 
 export default (memo(CreatePost));

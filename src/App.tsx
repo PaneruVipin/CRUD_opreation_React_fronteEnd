@@ -11,7 +11,6 @@ type AppProps={
   addBlog:(data:blogDetail)=>void
 }
 const App:FC<AppProps>=({addBlog})=> {
-const a:blogDetail={title:'djj',date:'',content:'',image:''}
 const [toggleCreatePost, setToggleCreatePost]=useState(false)
 const cancelClick=()=>{
   setToggleCreatePost(!toggleCreatePost)
@@ -25,6 +24,7 @@ const blogAdd=(data:blogDetail)=>{
     <Header/>
     </div>
     {toggleCreatePost && <WritingPopup
+    buttonName="upload"
      cancelclick={cancelClick}
       intialValues={{title:'',date:'',content:'',image:''}} 
       blogAdd={blogAdd}/>}

@@ -11,11 +11,10 @@ import { loadingSelector } from "../../TS/seectors/blogs";
 type BlogRowProps = {
   blog:blog
   editBlog:(blog:blogDetail,id:string)=>void
-  deleteBlog:(id:string)=>void,
-  loading:boolean
+  deleteBlog:(id:string)=>void
 };
 
-const BlogRow: FC<BlogRowProps> = ({blog,editBlog,deleteBlog,loading}) => {
+const BlogRow: FC<BlogRowProps> = ({blog,editBlog,deleteBlog}) => {
   
   const [toggleEdit,setToggleEdit]=useState(false)
   const cancelClick=()=>{
@@ -40,12 +39,12 @@ const blogEdit=(blogDetail:blogDetail)=>{
 }
 return (
   <div className="rounded-md shadow-md">
-    {loading && <Loader/>}
     {toggleEdit && <WritingPopup
+    buttonName="update"
      intialValues={intialValues} cancelclick={cancelClick} blogEdit={blogEdit}/>}
     <div className="flex  justify-end">
-    <BiEdit className="w-10 h-10 " onClick={editClick}/>
-    <AiFillDelete className="w-10 h-10 ml-4" onClick={deleteClick}/>
+    <BiEdit className="w-10 h-10 hover:text-red-300" title="edit" onClick={editClick}/>
+    <AiFillDelete className="w-10 h-10 ml-4 hover:text-red-300 " title="delete" onClick={deleteClick}/>
     </div>
     <div className="md:flex gap-x-3 p-4 space-y-2  ">
     <img src={blog.image} className='w-64 h-64'/>
@@ -66,7 +65,7 @@ const mapDispatchToProps={
 }
 const mapStateToProps=(s:State)=>{
   return {
-    loading:loadingSelector(s)
+    
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)((memo(BlogRow)));

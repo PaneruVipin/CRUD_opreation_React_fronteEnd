@@ -1,10 +1,12 @@
 
-import { FC, memo, useEffect } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { connect } from "react-redux";
+import Loader from "../../loader/Loader";
 import { blogsFetchAction} from "../../TS/actions/blogs";
 import { blog } from "../../TS/modeles/blog";
 import { ADELoadingSelector, blogsStateSelector, loadingSelector,  } from "../../TS/seectors/blogs";
 import { State } from "../../TS/store";
+import Button from "../Basics/Button";
 import BlogRow from "./BlogRow";
 
 type BlogsPageProps = {
@@ -14,17 +16,25 @@ type BlogsPageProps = {
     loading:boolean
 };
 
-const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,ADELoading,loading,...props}) => {
+const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,ADELoading,loading}) => {
   useEffect(()=>{
-    console.log('useState run')
    blogsFetch()
-  },[ADELoading])
-  const filteredBlogs=blogs.reverse().slice(0,4)
-  console.log(blogs)
-  return <div className="md:px-20 py-10 px-2 ">
+  },[ADELoading])//ADE - ADDED DELETED EDITED 
+  const [n,setN]=useState(5)
+  const filteredBlogs=blogs.reverse().slice(0,n)
+  console.log('n',n,blogs.length)
+  return <div className="md:px-20 pt-10 pb-20 px-2 ">
+    {
+      loading && <Loader/>
+    }
 {
 filteredBlogs.map((b)=><BlogRow key={b._id} blog={b}/>)
 }
+<div className="flex justify-center gap-x-4 mt-6">
+{(blogs.length+1!>=n) &&<Button theme='secondry' onClick={()=>{setN(n+5)}}>See More....</Button>}
+{
+  n>5 && <Button theme='secondry' onClick={()=>{n>=10?setN(n-5):setN(5)}}>See less....</Button>}
+  </div>
   </div>;
 };
 
