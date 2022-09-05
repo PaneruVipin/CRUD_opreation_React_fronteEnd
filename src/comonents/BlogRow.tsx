@@ -39,6 +39,7 @@ const handleBlogEdit=(blogDetail:blogDetail)=>{
 }
 const handleConfirmDelete=()=>{
   deleteBlog(blog._id,ADELoading,`D${alertId}`)
+  toggleDeleteClick()
 }
 return (
   <div className="rounded-md shadow-md">
