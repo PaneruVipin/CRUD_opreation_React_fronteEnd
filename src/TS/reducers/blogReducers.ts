@@ -23,7 +23,7 @@ export const blogsReducers:Reducer<state>=(state=initialState,action)=>{
         return {...state,entities:blogs,loading:action.payload.loading}
      }
      case BLOGS_FETCH:{
-      return{...state,loading:action.payload.loading}
+      return{...state,loading:action.payload}
      }
      case BLOG_ADDED:{
       const {ADELoading,loading}=action.payload
