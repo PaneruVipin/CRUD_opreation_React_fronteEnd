@@ -11,3 +11,10 @@ export type blogDetail={
     date:string
     image:string
 }
+
+export type alert={
+    message:string
+    alertId:string
+    
+}
+

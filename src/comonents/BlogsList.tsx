@@ -1,22 +1,22 @@
 
 import { FC, memo, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import Loader from "../../loader/Loader";
-import { blogsFetchAction} from "../../TS/actions/blogs";
-import { blog } from "../../TS/modeles/blog";
-import { ADELoadingSelector, blogsStateSelector, loadingSelector,  } from "../../TS/seectors/blogs";
-import { State } from "../../TS/store";
-import Button from "../Basics/Button";
+import Loader from "./loader/Loader";
+import { blogsFetchAction} from "../actions/blogs";
+import { blog } from "../modeles/blogs";
+import { ADELoadingSelector, blogsStateSelector, loadingSelector,  } from "../seectors/blogs";
+import { State } from "../store";
+import Button from "./Button";
 import BlogRow from "./BlogRow";
 
-type BlogsPageProps = {
+type BlogsListProps = {
     blogs:blog[]
     blogsFetch:()=>void
     ADELoading:boolean
     loading:boolean
 };
 
-const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,ADELoading,loading}) => {
+const BlogsList: FC<BlogsListProps> = ({blogs,blogsFetch,ADELoading,loading}) => {
   useEffect(()=>{
    blogsFetch()
   },[ADELoading])//ADE - ADDED DELETED EDITED 
@@ -38,7 +38,7 @@ filteredBlogs.map((b)=><BlogRow key={b._id} blog={b}/>)
   </div>;
 };
 
-BlogsPage.defaultProps = {};
+BlogsList.defaultProps = {};
 const mapStateToProps=(s:State)=>{
   return {
     blogs:blogsStateSelector(s),
@@ -50,4 +50,4 @@ const mapDispatchToProps={
   blogsFetch:blogsFetchAction
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(memo(BlogsPage));
+export default connect(mapStateToProps, mapDispatchToProps)(memo(BlogsList));

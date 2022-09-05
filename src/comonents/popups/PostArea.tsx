@@ -1,12 +1,12 @@
 import { Form, Formik } from "formik";
 import { FC, memo } from "react";
 import { object, string } from "yup";
-import { blog, blogDetail } from "../../TS/modeles/blog";
-import Button from "../Basics/Button";
-import Input from "../Basics/Input";
-import Textarea from "../Basics/Textarea";
+import { blog, blogDetail } from "../../modeles/blogs";
+import Button from "../Button";
+import Input from "../Input";
+import Textarea from "../Textarea";
 
-type CreatePostProps = {
+type PostAreaProps = {
     cancelclick:()=>void
     intialValues:blogDetail
     blogAdd?:(blog:blogDetail)=>void
@@ -14,9 +14,8 @@ type CreatePostProps = {
     buttonName?:'save'|'upload'|'edit'|'update'
 };
 
-const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogEdit,buttonName,...props}) => {
+const PostArea: FC<PostAreaProps> = ({cancelclick,intialValues,blogAdd,blogEdit,buttonName,...props}) => {
     const onSubmit=(data:any)=>{
-      console.log('submitdata',data)
         if(blogAdd){
             blogAdd(data)
         }
@@ -54,9 +53,9 @@ const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogE
   </Formik>
 };
 
-CreatePost.defaultProps = {
+PostArea.defaultProps = {
   buttonName:'save'
 };
 
 
-export default (memo(CreatePost));
+export default (memo(PostArea));
