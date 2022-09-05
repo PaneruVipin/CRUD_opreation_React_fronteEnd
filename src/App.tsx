@@ -4,12 +4,12 @@ import { blogAddAction } from "./actions/blogs"
 import BlogsList from "./comonents/BlogsList"
 import Footer from "./comonents/Footer"
 import Header from "./comonents/Header"
-import PostArea from "./comonents/popups/PostArea"
+import PostArea from "./comonents/PostArea"
 import { blogDetail } from "./modeles/blogs"
 import { ADELoadingSelector } from "./seectors/blogs"
 import { State } from "./store"
 import {uniqueId} from 'lodash'
-import AlertList from "./comonents/popups/AlertList"
+import AlertList from "./comonents/AlertList"
 
 type AppProps={
   addBlog:(data:blogDetail,ADELoading:boolean,alertId:string)=>void,

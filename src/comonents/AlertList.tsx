@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { FC, memo } from "react";
-import { alert } from "../../modeles/blogs";
-import { alertsSelector } from "../../seectors/blogs";
-import { State } from "../../store";
+import { alert } from "../modeles/blogs";
+import { alertsSelector } from "../seectors/blogs";
+import { State } from "../store";
 import Alert from "./Alert";
 
 type AlertListProps = {

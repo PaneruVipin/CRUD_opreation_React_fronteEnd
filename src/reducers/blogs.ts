@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
 import { ALERT_REMOVE, BLOGS_FETCH, BLOGS_FETCHED, BLOG_ADD, BLOG_ADDED, BLOG_DELETE, BLOG_DELETED, BLOG_EDIT, BLOG_EDITED } from "../actions/blogs";
-import Alert from "../comonents/popups/Alert";
+import Alert from "../comonents/Alert";
 import { useArrayToObject } from "../hooks/arrays";
 import { alert, blog } from "../modeles/blogs";
 

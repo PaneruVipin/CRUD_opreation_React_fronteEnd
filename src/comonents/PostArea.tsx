@@ -1,10 +1,10 @@
 import { Form, Formik } from "formik";
 import { FC, memo } from "react";
 import { object, string } from "yup";
-import { blog, blogDetail } from "../../modeles/blogs";
-import Button from "../Button";
-import Input from "../Input";
-import Textarea from "../Textarea";
+import { blog, blogDetail } from "../modeles/blogs";
+import Button from "./Button";
+import Input from "./Input";
+import Textarea from "./Textarea";
 
 type PostAreaProps = {
     cancelclick:()=>void

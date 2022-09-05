@@ -1,6 +1,6 @@
 import axios from "axios"
 import { blog, blogDetail } from "../modeles/blogs"
-const BASE_API='https://crudcrud.com/api/2003fe4fa6d5493b9810c480cc531104/'
+const BASE_API='https://crudcrud.com/api/a89a3d978f1b4a998e21a2983b00312c/'
 export  const getBlogs= async() =>{
     const response= await axios.get<blog[]>(BASE_API+'blogs')
     return response.data

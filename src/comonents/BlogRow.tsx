@@ -4,10 +4,10 @@ import {AiFillDelete} from 'react-icons/ai'
 import {BiEdit} from 'react-icons/bi'
 import { connect } from "react-redux";
 import { blogDeleteAction, blogEditAction } from "../actions/blogs";
-import PostArea from "./popups/PostArea";
+import PostArea from "./PostArea";
 import { State } from "../store";
 import { ADELoadingSelector } from "../seectors/blogs";
-import Confirmation from "./popups/Confirmation";
+import Confirmation from "./Confirmation";
 import {uniqueId} from 'lodash'
 type BlogRowProps = {
   blog:blog

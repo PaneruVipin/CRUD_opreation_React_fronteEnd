@@ -1,9 +1,9 @@
 import { FC, memo, useEffect } from "react";
 import { connect } from "react-redux";
-import { removeAlertAction } from "../../actions/blogs";
-import { alert } from "../../modeles/blogs";
-import { ADELoadingSelector } from "../../seectors/blogs";
-import { State } from "../../store";
+import { removeAlertAction } from "../actions/blogs";
+import { alert } from "../modeles/blogs";
+import { ADELoadingSelector } from "../seectors/blogs";
+import { State } from "../store";
 
 type AlertProps = {
     alert:alert
