@@ -4,7 +4,7 @@ import { object, string } from "yup";
 import { blog, blogDetail } from "../../TS/modeles/blog";
 import Button from "../Basics/Button";
 import Input from "../Basics/Input";
-import TextArea from "../Basics/TextArea";
+import Textarea from "../Basics/Textarea";
 
 type CreatePostProps = {
     cancelclick:()=>void
@@ -34,16 +34,15 @@ const CreatePost: FC<CreatePostProps> = ({cancelclick,intialValues,blogAdd,blogE
    const initialValues={
    title:intialValues.title,
    image:intialValues.image,
-   date:intialValues.date,
    content:intialValues.content
    }
   return <Formik onSubmit={onSubmit} validationSchema={validationSchema} initialValues={initialValues}>
     <Form >
     <div className=" md:px-60 px-4 fixed inset-0 py-10 z-10">
      <div className=" rounded-md shadow-md shadow-md space-y-0 p-4 md:space-y-6 bg-yellow-500 h-full  overflow-y-scroll">
-    <TextArea rows={3} id="title" name="title" placeholder=" enter your blog title"/>
+    <Textarea rows={3} id="title" name="title" placeholder=" enter your blog title"/>
     <Input type='url' id="image" name="image" placeholder="enter image link"/>
-    <TextArea rows={10} id="content" name="content" placeholder=" enter desription"/>
+    <Textarea rows={10} id="content" name="content" placeholder=" enter desription"/>
     <Input id="date" name="date" type='date' />
     <div className="flex gap-x-4">
     <Button  type="submit">{buttonName}</Button>

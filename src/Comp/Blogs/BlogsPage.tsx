@@ -22,6 +22,7 @@ const BlogsPage: FC<BlogsPageProps> = ({blogs,blogsFetch,ADELoading,loading}) =>
   },[ADELoading])//ADE - ADDED DELETED EDITED 
   const [n,setN]=useState(5)
   const filteredBlogs=blogs.reverse().slice(0,n)
+ 
   return <div className="md:px-20 pt-10 pb-20 px-2 ">
     {
       loading && <Loader/>
